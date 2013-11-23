@@ -19,25 +19,19 @@
                         <span>{{message.user}}</span> <p>{{message.message}}</p>
                     </div>
                 </div>
-                <textarea id="track">{{track}}</textarea>
             </div>
             <div class="span4">
                 <h2>Members</h2>
                 <ul id="members">
                     <li ng-repeat="member in members">{{member}}</li>
                 </ul>
-            </div>
-        </div>
-        <div ng-controller="SuggestCtrl">
-            <ul>
-                <li ng-repeat="track in tracks">{{track.trackName}}</li>
-            </ul>
-            <div ng-controller="SuggestCtrl">
-                <h2>Input</h2>
-                <input type="text" name="talk" id="talk" ng-model="term" ng-Keyup="suggest()">
-                <ul id="trackSuggest">
-                    <li ng-repeat="track in tracks">{{track.trackName}} / {{track.artistName}}</li>
-                </ul>
+                <div ng-controller="SuggestCtrl">
+                    <h2>Input Song Name!!</h2>
+                    <input type="text" name="track" id="track" ng-model="term" ng-Keyup="suggest()">
+                    <ul id="trackSuggest">
+                        <li ng-repeat="track in tracks">{{track.trackName}} / {{track.artistName}}</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

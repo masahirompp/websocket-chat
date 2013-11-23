@@ -6,7 +6,8 @@ function SuggestCtrl($scope) {
     url: baseUrl,
     dataType: 'jsonp',
     success: function(data){
-      alert('success');
+      alert(data.results[0].trackName);
+      $scope.tracks = data.results;
     },
     error: function(data){
       alert('error');

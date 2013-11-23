@@ -15,8 +15,4 @@ function SuggestCtrl($scope) {
       }
     });
   };
-
-  $scope.addTrack = function(track) {
-    alert("add!!");
-  };
 }

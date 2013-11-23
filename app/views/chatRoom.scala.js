@@ -5,17 +5,6 @@ function chatRoomAppController($scope) {
     var WS = window['MozWebSocket'] ? MozWebSocket : WebSocket;
     var chatSocket = new WS("@routes.Application.chat(username).webSocketURL()");
 
-    $scope.sendTrack = function(e) {
-      if (e.keyCode === 13) {
-          chatSocket.send(JSON.stringify(
-              //{text: $scope.selectedTrack = ""}
-              {text: new track()}
-          ));
-         
-          $scope.track = '';
-      }
-    };
-
     chatSocket.onmessage = function(e) {
         var data = JSON.parse(e.data);
 

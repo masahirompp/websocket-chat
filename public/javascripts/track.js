@@ -13,6 +13,6 @@ function track() {
       this.trackName = "Spending all my time";
       this.trackPrice = 250.0;
       this.trackTimeMillis = 234600;
-      this.trackViewUrl = 'https://itunes.apple.com/jp/album/spending-all-my-time/id658891992?i=658891996&uo=4'
+      this.trackViewUrl = 'https://itunes.apple.com/jp/album/spending-all-my-time/id658891992?i=658891996&uo=4';
       this.wrapperType = "track";
 }

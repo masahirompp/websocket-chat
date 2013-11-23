@@ -15,19 +15,13 @@ function chatRoomAppController($scope) {
         $scope.$apply(function() { $scope.error = error; });
     };
 
-    // add track (&& send track to all user)
-    $scope.addTrack = function(track) {
-        // FIXME: send simple object for test.
-        //alert(JSON.stringify({text: track}));
-        chatSocket.send(JSON.stringify({text: track}));
-        //chatSocket.send({text: JSON.stringify(track)});
-        $scope.term = '';
+    // send track to all user
+    $scope.sendMessage = function(track) {
+        chatSocket.send(JSON.stringify({text: 'hoge'}));
     };
 
     // on receive message
     chatSocket.onmessage = function(e) {
-        alert('onmessage: ' + e.data);
-      
         var data = JSON.parse(e.data);
        
         $scope.$apply(function() {

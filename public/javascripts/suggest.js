@@ -2,7 +2,7 @@ function SuggestCtrl($scope) {
 
   var baseUrl = 'http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/wa/wsSearch?term=@term&country=JP&entity=musicTrack';
 
-  $scope.term = "";
+  $scope.term = '';
 
   $scope.suggest = function() {
 
@@ -15,5 +15,12 @@ function SuggestCtrl($scope) {
         });
       }
     });
+  };
+
+  // add Track
+  $scope.addTrack = function(track) {
+    $scope.term = track.trackName;
+    $scope.sendMessage(track);
+    $('#track').focus();
   };
 }

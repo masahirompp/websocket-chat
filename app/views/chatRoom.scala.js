@@ -17,7 +17,11 @@ function chatRoomAppController($scope) {
 
     // send track to all user
     $scope.sendMessage = function(track) {
-        chatSocket.send(JSON.stringify({text: track.trackName + ',' + track.trackTimeMillis}));
+        chatSocket.send(
+            JSON.stringify({
+                text: track.trackName + ',' + encodeURIComponent(track.artworkUrl100) + ',' + track.trackTimeMillis
+            })
+        );
     };
 
     // on receive message
@@ -29,9 +33,10 @@ function chatRoomAppController($scope) {
             $scope.messages.push({
                 user: data.user,
                 trackName: data.message.split(',')[0],
-                trackTimeMillis: data.message.split(',')[1],
+                image: decodeURIComponent(data.message.split(',')[1]),
+                trackTimeMillis: data.message.split(',')[2],
                 kind: data.kind,
-                me: data.user === '@username'
+                me: data.user === '@username',
             });
 
             // Update the members list

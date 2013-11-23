@@ -17,6 +17,7 @@
                 <div id="messages">
                     <div class="message {{msg.kind}}" ng-class="{me: msg.me}" ng-repeat="msg in messages">
                       <span>{{msg.user}}</span> <p>{{msg.trackName}}, {{msg.trackTimeMillis|number}}[msec]</p>
+                      <p><img ng-src="{{msg.image}}" alt="" /></p>
                     </div>
                 </div>
             </div>

@@ -17,7 +17,7 @@ function chatRoomAppController($scope) {
 
     // send track to all user
     $scope.sendMessage = function(track) {
-        chatSocket.send(JSON.stringify({text: 'hoge'}));
+        chatSocket.send(JSON.stringify({text: track.trackName}));
     };
 
     // on receive message

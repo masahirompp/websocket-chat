@@ -1,37 +1,37 @@
 @(username: String)(implicit request: RequestHeader)
 
 @main(Some(username)) {
-    
-    <div class="page-header">
-        <h1>Welcome to the chat room <small>You are chatting as @username</small></h1>
-    </div>
-    
-    <div id="onError" class="alert-message error">
-        <p>
-            <strong>Oops!</strong> <span></span>
-        </p>
-    </div>
-    
-    <div id="onChat" class="row">
-        <div class="span10" id="main">
-            <div id="messages">
-            </div>
-            <textarea id="talk"></textarea>
+    <div ng-controller="chatRoomAppController">
+        <div class="page-header">
+            <h1>Welcome to the chat room <small>You are chatting as @username</small></h1>
         </div>
-        <div class="span4">
-            <h2>Members</h2>
-            <ul id="members">
+        
+        <div id="onError" class="alert-message error">
+            <p>
+                <strong>Oops!</strong> <span>{{error}}</span>
+            </p>
+        </div>
+        
+        <div id="onChat" class="row">
+            <div class="span10" id="main">
+                <div id="messages">
+                </div>
+                <textarea id="track" ng-keypress="sendTrack()">{{track}}</textarea>
+            </div>
+            <div class="span4">
+                <h2>Members</h2>
+                <ul id="members">
+                </ul>
+            </div>
+        </div>
+        <div ng-controller="SuggestCtrl">
+            <ul>
+                <li ng-repeat="track in tracks">{{track.trackName}}</li>
             </ul>
         </div>
-    </div>
-    <div ng-controller="SuggestCtrl">
-        <ul>
-            <li ng-repeat="track in tracks">{{track.trackName}}</li>
-        </ul>
     </div>
 
     <script type="text/javascript" charset="utf-8" src="@routes.Application.chatRoomJs(username)"></script>
     <script type="text/javascript" charset="utf-8" src="/assets/javascripts/track.js"></script>
     <script type="text/javascript" charset="utf-8" src="/assets/javascripts/suggest.js"></script>
-    
 }

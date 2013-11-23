@@ -1,56 +1,50 @@
 @(username: String)(implicit r: RequestHeader)
 
-$(function() {
+var app = angular.module('app', []);
 
-    var WS = window['MozWebSocket'] ? MozWebSocket : WebSocket
-    var chatSocket = new WS("@routes.Application.chat(username).webSocketURL()")
+app.controller('chatRoomAppController', function($scope) {
+  
+    var WS = window['MozWebSocket'] ? MozWebSocket : WebSocket;
+    var chatSocket = new WS("@routes.Application.chat(username).webSocketURL()");
 
-    var sendMessage = function() {
-        chatSocket.send(JSON.stringify(
-            {text: $("#talk").val()}
-        ))
-        $("#talk").val('')
-    }
+    $scope.sendTrack = function(e) {
+      if (e.keyCode === 13) {
+          chatSocket.send(JSON.stringify(
+              //{text: $scope.selectedTrack = ""}
+              {text: new track()}
+          ));
+         
+          $scope.track = '';
+      }
+    };
 
-    var receiveEvent = function(event) {
-        var data = JSON.parse(event.data)
+    chatSocket.onmessage = function(e) {
+        var data = JSON.parse(e.data);
 
         // Handle errors
         if(data.error) {
-            chatSocket.close()
-            $("#onError span").text(data.error)
-            $("#onError").show()
-            return
+            chatSocket.close();
+            $scope.error = data.error;
+            return;
         } else {
-            $("#onChat").show()
+            $scope.error = '';
         }
 
         // Create the message element
-        var el = $('<div class="message"><span></span><p></p></div>')
-        $("span", el).text(data.user)
-        $("p", el).text(data.message)
-        $(el).addClass(data.kind)
-        if(data.user == '@username') $(el).addClass('me')
-        $('#messages').append(el)
+        var el = $('<div class="message"><span></span><p></p></div>');
+        $("span", el).text(data.user);
+        $("p", el).text(data.message);
+        $(el).addClass(data.kind);
+        if(data.user == '@username') $(el).addClass('me');
+        $('#messages').append(el);
 
         // Update the members list
-        $("#members").html('')
+        $("#members").html('');
         $(data.members).each(function() {
             var li = document.createElement('li');
             li.textContent = this;
             $("#members").append(li);
-        })
+        });
     }
 
-    var handleReturnKey = function(e) {
-        if(e.charCode == 13 || e.keyCode == 13) {
-            e.preventDefault()
-            sendMessage()
-        }
-    }
-
-    $("#talk").keypress(handleReturnKey)
-
-    chatSocket.onmessage = receiveEvent
-
-})
+});

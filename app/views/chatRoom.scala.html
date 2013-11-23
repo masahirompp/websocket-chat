@@ -15,8 +15,8 @@
         <div id="onChat" class="row" ng-hide="error">
             <div class="span10" id="main">
                 <div id="messages">
-                    <div class="message ng-repeat="message in messsages">
-                        <span>{{message.user}}</span> <p>{{message.message}}</p>
+                    <div class="message {{msg.kind}}" ng-class="{me: msg.me}" ng-repeat="msg in messsages">
+                        <span>{{msg.user}}</span> <p>{{msg.message}}</p>
                     </div>
                 </div>
             </div>

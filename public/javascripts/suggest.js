@@ -5,6 +5,7 @@ function SuggestCtrl($scope) {
   $scope.term = "";
 
   $scope.suggest = function() {
+
     $.ajax({
       url: baseUrl.replace('@term',$scope.term),
       dataType: 'jsonp',

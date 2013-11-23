@@ -28,7 +28,7 @@
                 <div ng-controller="SuggestCtrl">
                     <h2>Input Song Name!!</h2>
                     <input type="text" name="track" id="track" ng-model="term" ng-Keyup="suggest()">
-                    <ul id="trackSuggest">
+                    <ul id="trackSuggest" class="dropdown-menu">
                         <li ng-repeat="track in tracks">{{track.trackName}} / {{track.artistName}}</li>
                     </ul>
                 </div>

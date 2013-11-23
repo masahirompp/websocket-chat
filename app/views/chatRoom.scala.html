@@ -21,11 +21,11 @@
             <h2>Members</h2>
             <ul id="members">
             </ul>
-            <h2>Input</h2>
-            <input type="text" name="talk" id="talk">
             <div ng-controller="SuggestCtrl">
+                <h2>Input</h2>
+                <input type="text" name="talk" id="talk" ng-model="term" ng-Keyup="suggest()">
                 <ul id="trackSuggest">
-                    <li ng-repeat="track in tracks">{{track.trackName}}</li>
+                    <li ng-repeat="track in tracks">{{track.trackName}} / {{track.artistName}}</li>
                 </ul>
             </div>
         </div>

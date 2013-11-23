@@ -24,9 +24,14 @@
             </ul>
         </div>
     </div>
-    
+    <div ng-controller="SuggestCtrl">
+        <ul>
+            <li ng-repeat="track in tracks">{{track.trackName}}</li>
+        </ul>
+    </div>
+
     <script type="text/javascript" charset="utf-8" src="@routes.Application.chatRoomJs(username)"></script>
     <script type="text/javascript" charset="utf-8" src="/assets/javascripts/track.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/assets/javascripts/angular.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/assets/javascripts/suggest.js"></script>
     
 }

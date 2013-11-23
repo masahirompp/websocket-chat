@@ -17,7 +17,7 @@ function chatRoomAppController($scope) {
 
     // send track to all user
     $scope.sendMessage = function(track) {
-        chatSocket.send(JSON.stringify({text: track.trackName}));
+        chatSocket.send(JSON.stringify({text: track.trackName + ',' + track.trackTimeMillis}));
     };
 
     // on receive message
@@ -28,7 +28,8 @@ function chatRoomAppController($scope) {
             // Create the message element
             $scope.messages.push({
                 user: data.user,
-                message: data.message,
+                trackName: data.message.split(',')[0],
+                trackTimeMillis: data.message.split(',')[1],
                 kind: data.kind,
                 me: data.user === '@username'
             });

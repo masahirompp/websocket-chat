@@ -16,18 +16,19 @@
         <div class="span10" id="main">
             <div id="messages">
             </div>
-            <textarea id="talk"></textarea>
         </div>
         <div class="span4">
             <h2>Members</h2>
             <ul id="members">
             </ul>
+            <h2>Input</h2>
+            <input type="text" name="talk" id="talk">
+            <div ng-controller="SuggestCtrl">
+                <ul id="trackSuggest">
+                    <li ng-repeat="track in tracks">{{track.trackName}}</li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <div ng-controller="SuggestCtrl">
-        <ul>
-            <li ng-repeat="track in tracks">{{track.trackName}}</li>
-        </ul>
     </div>
 
     <script type="text/javascript" charset="utf-8" src="@routes.Application.chatRoomJs(username)"></script>

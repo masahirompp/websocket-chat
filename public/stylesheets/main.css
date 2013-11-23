@@ -71,15 +71,6 @@ body {
     bottom: 60px;
 }
 
-#talk {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: auto;
-    height: 40px
-}
-
 .message {
     padding: 4px 0;
     border-bottom: 1px solid #eee;

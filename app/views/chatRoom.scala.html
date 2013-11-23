@@ -1,25 +1,36 @@
 @(username: String)(implicit request: RequestHeader)
 
 @main(Some(username)) {
-    
-    <div class="page-header">
-        <h1>Welcome to the chat room <small>You are chatting as @username</small></h1>
-    </div>
-    
-    <div id="onError" class="alert-message error">
-        <p>
-            <strong>Oops!</strong> <span></span>
-        </p>
-    </div>
-    
-    <div id="onChat" class="row">
-        <div class="span10" id="main">
-            <div id="messages">
+    <div ng-controller="chatRoomAppController">
+        <div class="page-header">
+            <h1>Welcome to the chat room <small>You are chatting as @username</small></h1>
+        </div>
+        
+        <div id="onError" class="alert-message error" ng-show="error">
+            <p>
+                <strong>Oops!</strong> <span>{{error}}</span>
+            </p>
+        </div>
+        
+        <div id="onChat" class="row" ng-hide="error">
+            <div class="span10" id="main">
+                <div id="messages">
+                    <div class="message" ng-class="" ng-repeat="message in messsages">
+                        <span>{{message.user}}</span> <p>{{message.message}}</p>
+                    </div>
+                </div>
+                <textarea id="track">{{track}}</textarea>
+            </div>
+            <div class="span4">
+                <h2>Members</h2>
+                <ul id="members">
+                    <li ng-repeat="member in members">{{member}}</li>
+                </ul>
             </div>
         </div>
-        <div class="span4">
-            <h2>Members</h2>
-            <ul id="members">
+        <div ng-controller="SuggestCtrl">
+            <ul>
+                <li ng-repeat="track in tracks">{{track.trackName}}</li>
             </ul>
             <div ng-controller="SuggestCtrl">
                 <h2>Input</h2>
@@ -34,5 +45,4 @@
     <script type="text/javascript" charset="utf-8" src="@routes.Application.chatRoomJs(username)"></script>
     <script type="text/javascript" charset="utf-8" src="/assets/javascripts/track.js"></script>
     <script type="text/javascript" charset="utf-8" src="/assets/javascripts/suggest.js"></script>
-    
 }

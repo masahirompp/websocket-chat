@@ -18,7 +18,8 @@ function chatRoomAppController($scope) {
     // add track (&& send track to all user)
     $scope.addTrack = function(track) {
         // FIXME: send simple object for test.
-        chatSocket.send({text: JSON.stringify(new Object())});
+        //alert(JSON.stringify({text: track}));
+        chatSocket.send(JSON.stringify({text: track}));
         //chatSocket.send({text: JSON.stringify(track)});
         $scope.term = '';
     };

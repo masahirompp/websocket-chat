@@ -49,7 +49,7 @@ object ChatRoom {
     val roomActor = Akka.system.actorOf(Props[ChatRoom])
     
     // Create a bot user (just for fun)
-    Robot(roomActor)
+    //Robot(roomActor)
     
     roomActor
   }

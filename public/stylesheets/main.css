@@ -102,3 +102,36 @@ body {
 .message.join, .message.quit {
     background: #D9E7FB;
 }
+
+#trackSuggest ul{ 
+margin: 0; 
+padding: 0; 
+list-style-type: none; 
+}
+#trackSuggest li{ 
+display: inline; 
+padding: 0; 
+margin: 0; 
+}
+#trackSuggest li span{
+display: block; 
+border-left: 8px solid #474655;
+border-top: 1px solid #474655;
+border-right: 1px solid #474655;
+border-bottom: 1px solid #474655;
+background-color: #fff;
+padding: 3px 10px;
+text-decoration: none;
+color: #333;
+width: 200px; 
+margin: 1px 0px;
+text-align: left;
+font-size: 14px;
+}
+#trackSuggest li span:hover{
+border-left: 8px solid #474655;
+border-top: 1px solid #474655;
+border-right: 1px solid #474655;
+border-bottom: 1px solid #474655;
+background-color: #d7efd7;
+}

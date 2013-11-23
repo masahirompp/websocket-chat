@@ -1,8 +1,6 @@
 @(username: String)(implicit r: RequestHeader)
 
-var app = angular.module('app', []);
-
-app.controller('chatRoomAppController', function($scope) {
+function chatRoomAppController($scope) {
   
     var WS = window['MozWebSocket'] ? MozWebSocket : WebSocket;
     var chatSocket = new WS("@routes.Application.chat(username).webSocketURL()");
@@ -39,12 +37,9 @@ app.controller('chatRoomAppController', function($scope) {
         $('#messages').append(el);
 
         // Update the members list
-        $("#members").html('');
-        $(data.members).each(function() {
-            var li = document.createElement('li');
-            li.textContent = this;
-            $("#members").append(li);
-        });
-    }
+        $scope.$apply = function() {
+            $scope.members = data.members;
+        };
+    };
 
-});
+}

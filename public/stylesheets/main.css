@@ -63,7 +63,7 @@ body {
 }
 
 #onError, #onChat {
-    display: none;
+    /*display: none;*/
 }
 
 #messages {

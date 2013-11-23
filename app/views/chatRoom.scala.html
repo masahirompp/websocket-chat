@@ -6,21 +6,25 @@
             <h1>Welcome to the chat room <small>You are chatting as @username</small></h1>
         </div>
         
-        <div id="onError" class="alert-message error">
+        <div id="onError" class="alert-message error" ng-show="error">
             <p>
                 <strong>Oops!</strong> <span>{{error}}</span>
             </p>
         </div>
         
-        <div id="onChat" class="row">
+        <div id="onChat" class="row" ng-hide="error">
             <div class="span10" id="main">
                 <div id="messages">
+                    <div class="message" ng-class="" ng-repeat="message in messsages">
+                        <span>{{message.user}}</span> <p>{{message.message}}</p>
+                    </div>
                 </div>
-                <textarea id="track" ng-keypress="sendTrack()">{{track}}</textarea>
+                <textarea id="track">{{track}}</textarea>
             </div>
             <div class="span4">
                 <h2>Members</h2>
                 <ul id="members">
+                    <li ng-repeat="member in members">{{member}}</li>
                 </ul>
             </div>
         </div>

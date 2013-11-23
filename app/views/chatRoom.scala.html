@@ -16,7 +16,7 @@
             <div class="span10" id="main">
                 <div id="messages">
                     <div class="message {{msg.kind}}" ng-class="{me: msg.me}" ng-repeat="msg in messages">
-                        <span>{{msg.user}}</span> <p>{{msg.message}}</p>
+                        <span>{{msg.user}}</span> <p>{{msg.message}}</p><img src="{{msg.image}}" alt="">
                     </div>
                 </div>
             </div>

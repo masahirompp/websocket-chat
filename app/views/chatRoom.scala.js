@@ -19,7 +19,7 @@ function chatRoomAppController($scope) {
     $scope.sendMessage = function(track) {
         chatSocket.send(
             JSON.stringify({
-                text: track.trackName + ',' + encodeURIComponent(track.artworkUrl100) + ',' + track.trackTimeMillis
+                text: track.trackName + ',' + encodeURIComponent(track.artworkUrl60) + ',' + track.trackTimeMillis
             })
         );
     };
